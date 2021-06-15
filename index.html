@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./page/demo.css">
+</head>
+
+<body>
+    <header>
+        <div class="navbar position-relative bg">
+            <button class=" btn btn-outline-light d-md-none ml-3" data-toggle="collapse" data-target="#myNav">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img"
+                    focusable="false">
+                    <title>Menu</title>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"
+                        d="M4 7h22M4 15h22M4 23h22"></path>
+                </svg>
+            </button>
+            <div class="navbar-brand mx-auto mr-md-auto ml-md-3 ">
+                <img src="./images/logo.png" style="width: 3.5rem;" alt="">
+                <span class="text-white font-weight-bold ml-3 d-inline-block">学</span>
+                <span class="text-white font-weight-bold ml-3 d-inline-block">生</span>
+                <span class="text-white font-weight-bold ml-3 d-inline-block">管</span>
+                <span class="text-white font-weight-bold ml-3 d-inline-block">理</span>
+            </div>
+            <div class="navbar-collapse collapse position-absolute w-100 text-center d-md-none" id="myNav">
+                <nav class="navbar-nav nav my-2">
+                    <a href="#student-list" class="nav-link" data-toggle="tab">学生列表</a>
+                    <a href="#student-add" class="nav-link" data-toggle="tab">新增学生</a>
+                    <a href="#student-echarts" class="nav-link" data-toggle="tab">统计图表</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid main">
+        <div class="row">
+            <div class="leftCon d-none d-md-block pl-4 pt-4">
+                <h5 class="text-white font-weight-bold mb-4">学生管理</h5>
+                <nav class="nav my-2 flex-column ">
+                    <a href="#student-list" class="nav-link text-center text-white py-3 active"
+                        data-toggle="tab">学生列表</a>
+                    <a href="#student-add" class="nav-link text-center text-white py-3" data-toggle="tab">新增学生</a>
+                    <a href="#student-echarts" class="nav-link text-center text-white py-3" data-toggle="tab">统计图表</a>
+                </nav>
+            </div>
+            <div class="rightCon col">
+                <div class="tab-content">
+                    <!-- 学生列表 -->
+                    <div class="tab-pane active" id="student-list">
+                        <div class="search form-group form-inline my-4">
+                            <label for="searchsNo" class="col-form-lable mr-2">搜索:</label>
+                            <input type="text" class="form-control" placeholder="请输入学号" name="searchsNo">
+                            <button class="search-btn btn btn-dark mx-2">搜索</button>
+                            <button class="search-back btn btn-success mx-2">返回</button>
+                        </div>
+                        <table class="table text-center" border="0" cellpadding='0' cellspacing='0'>
+                            <thead class="table-secondary">
+                                <tr>
+                                    <td>学号</td>
+                                    <td>姓名</td>
+                                    <td>性别</td>
+                                    <td>邮箱</td>
+                                    <td>年龄</td>
+                                    <td>手机号</td>
+                                    <td>住址</td>
+                                    <td>操作</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>学号</td>
+                                    <td>姓名</td>
+                                    <td>性别</td>
+                                    <td>邮箱</td>
+                                    <td>年龄</td>
+                                    <td>手机号</td>
+                                    <td>住址</td>
+                                    <td>
+                                        <button class="edit-btn">编辑</button>
+                                        <button class="remove-btn">删除</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="turnpage d-flex justify-content-center"></div>
+                    </div>
+                    <!-- 新增学生 -->
+                    <div class="tab-pane" id="student-add">
+                        <form id="add-student-form" class="w-50 mx-auto mt-5">
+                            <div>
+                                <div class="form-group row justify-content-center">
+                                    <label for="sNo" class="col-form-label col-sm-2">学&nbsp;&nbsp;&nbsp;&nbsp;号：</label>
+                                    <input id="sNo" name="sNo" type="text" class="col-sm-4 form-control">
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <label for="name"
+                                        class="col-form-label col-sm-2">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+                                    <input name="name" type="text" class="col-sm-4 form-control">
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <label for="sex" class="col-form-label col-sm-2">性&nbsp;&nbsp;&nbsp;&nbsp;别：</label>
+                                    <div class="col-sm-4 d-flex">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" name="sex" type="radio" value="0" checked>
+                                            <label class="form-check-label" for="male">男</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" name="sex" type="radio" value="1">
+                                            <label class="form-check-label" for="female">女</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <label for="email"
+                                        class="col-form-label col-sm-2">邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</label>
+                                    <input name="email" class="col-sm-4 form-control" type="text">
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <label for="birth" class="col-form-label col-sm-2">出生年：</label>
+                                    <input name="birth" class="col-sm-4 form-control" type="text">
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <label for="phone" class="col-form-label col-sm-2">手机号：</label>
+                                    <input name="phone" class="col-sm-4 form-control" type="text">
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <label for="address"
+                                        class="col-form-label col-sm-2">住&nbsp;&nbsp;&nbsp;&nbsp;址：</label>
+                                    <input type="text" class="col-sm-4 form-control" name="address">
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <input type="button" value="添加" id="add-student-btn"
+                                        class="add btn btn-success mr-2">
+                                    <input type="reset" value="重置" class="reset btn btn-dark">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- 统计图表 -->
+                    <div class="tab-pane" id="student-echarts">
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="areaChart mx-auto my-5"></div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="sexChart mx-auto my-5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- 弹出层 -->
+    <div class="modal" id="editMessage">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">编辑信息</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <form id="edit-form" class="d-inline-block">
+                        <div class="form-group form-inline">
+                            <label for="edit-name" class="form-label mr-2">姓&nbsp;&nbsp;&nbsp;&nbsp;名</label>
+                            <input type="text" id="edit-name" name="name" class="form-control">
+                        </div>
+                        <div class="form-group form-check form-check-inline w-100">
+                            <label class="mr-2 mb-0">性&nbsp;&nbsp;&nbsp;&nbsp;别</label>
+                            <label class="form-check-label" for="edit-male" class="sex">男</label>
+                            <input class="form-check-input" type="radio" id="edit-male" checked name="sex" value="0">
+                            <label class="form-check-label" for="edit-female" class="sex">女</label>
+                            <input class="form-check-input" type="radio" id="edit-female" name="sex" value="1" >
+                        </div>
+                        <div class="form-group form-inline">
+                            <label for="edit-email" class="form-label mr-2">邮&nbsp;&nbsp;&nbsp;&nbsp;箱</label>
+                            <input type="text" id='edit-email' name="email" class="form-control">
+                        </div>
+                        <div class="form-group form-inline">
+                            <label for="edit-stuNo" class="form-label mr-2">学&nbsp;&nbsp;&nbsp;&nbsp;号</label>
+                            <input type="text" readonly id="stuNo" name="sNo" class="form-control">
+                        </div>
+                        <div class="form-group form-inline">
+                            <label for="edit-birth" class="form-label mr-2">出生年</label>
+                            <input type="text" id="edit-birth" name="birth" class="form-control">
+                        </div>
+                        <div class="form-group form-inline">
+                            <label for="edit-phone" class="form-label mr-2">手机号</label>
+                            <input type="text" id="edit-phone" name="phone" class="form-control">
+                        </div>
+                        <div class="form-group form-inline">
+                            <label for="edit-address" class="form-label mr-2">住&nbsp;&nbsp;&nbsp;&nbsp;址</label>
+                            <input type="text" id="edit-address" name="address" class="form-control">
+                        </div>
+                        <div>
+                            <label for=""></label>
+                            <input type="button" value="提交" class="btn btn-outline-success " data-dismiss="modal" id="modal-edit-btn">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <script src="./js/mock.js"></script>
+    <script src="./API/addApi.js"></script>
+    <script src="./API/api.js"></script>
+    <script src="./js/echarts.js"></script>
+    <script src="./js/mycharts.js"></script>
+    <script src="./page/demo.js"> </script>
+    <script src="./js/index.js"></script>
+
+</body>
+
+</html>
